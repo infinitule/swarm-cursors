@@ -297,13 +297,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         invalidate(); snapshot = nil; observation.string = ""; proposal.stringValue = "Observe the selected app to begin."
     }
     @objc func refreshApps() {
-        let previous = applications.indices.contains(targetMenu.indexOfSelectedItem) ? applications[targetMenu.indexOfSelectedItem].processIdentifier : nil
+        let previous = targetMenu.selectedItem?.representedObject as? Int
         applications = NSWorkspace.shared.runningApplications.filter {
             $0.activationPolicy == .regular && $0.processIdentifier != ProcessInfo.processInfo.processIdentifier
         }.sorted { ($0.localizedName ?? "") < ($1.localizedName ?? "") }
         targetMenu.removeAllItems()
-        targetMenu.addItems(withTitles: applications.map { $0.localizedName ?? "App \($0.processIdentifier)" })
-        if let index = applications.firstIndex(where: { $0.processIdentifier == previous }) { targetMenu.selectItem(at: index) }
+        for application in applications {
+            let name = application.localizedName ?? "App"
+            let duplicate = applications.filter { $0.localizedName == application.localizedName }.count > 1
+            targetMenu.addItem(withTitle: duplicate ? "\(name) (\(application.processIdentifier))" : name)
+            targetMenu.lastItem?.representedObject = Int(application.processIdentifier)
+        }
+        if let previous = previous, let item = targetMenu.itemArray.first(where: { ($0.representedObject as? Int) == previous }) {
+            targetMenu.select(item)
+        }
         targetChanged()
     }
     @objc func enableAccess() {
@@ -312,8 +319,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSTextFieldDelegate {
         else { status.stringValue = "Enable Swarm Desktop in Accessibility settings. Then return and click Observe." }
     }
     func selectedPID() throws -> pid_t {
-        guard applications.indices.contains(targetMenu.indexOfSelectedItem) else { throw AgentError.message("Choose a running desktop app.") }
-        return applications[targetMenu.indexOfSelectedItem].processIdentifier
+        guard let pid = targetMenu.selectedItem?.representedObject as? Int,
+              let application = applications.first(where: { Int($0.processIdentifier) == pid }),
+              !application.isTerminated else { throw AgentError.message("Choose a running desktop app.") }
+        return application.processIdentifier
     }
     func render(_ snapshot: Snapshot) {
         observation.string = snapshot.nodes.map {
