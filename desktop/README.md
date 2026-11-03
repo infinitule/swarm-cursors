@@ -79,6 +79,8 @@ No shell execution tool, raw coordinate clicks, or model-generated desktop code 
 
 Bridge validation: `.venv/bin/python -m unittest discover -s desktop/tests -p 'test_*.py' -v` runs 14 checks covering serialization, cancellation, stale health, private files, grounding, RPC cleanup and Loupe result review. `.venv/bin/python desktop/tests/protocol_smoke.py` checks a real SDK handshake, nine tool definitions and offline handling without touching desktop apps.
 
+The opt-in `.venv/bin/python desktop/tests/live_practice.py --run-practice` test edits only the running `com.infinitule.swarm.practice` app. It checks a text edit, stale-action rejection, Save and replay rejection through the real MCP/native bridge. It passed on the development Mac on 4 November 2026. A separate panel test correctly set Name to Ada Lovelace using Qwen3 0.6B with reasoning in 14.75 seconds. These are integration smoke tests, not a general reliability claim.
+
 ```sh
 python3 desktop/benchmark.py --model qwen3:0.6b --output benchmark.json
 # Compare the latency/quality tradeoff with thinking enabled:
