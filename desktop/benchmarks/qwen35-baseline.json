@@ -1,0 +1,117 @@
+{
+  "model": "qwen3.5:0.8b",
+  "cases": [
+    {
+      "name": "fill field",
+      "expected": {
+        "action": "set_text",
+        "target": 1,
+        "text": "Ada Lovelace"
+      },
+      "answer": {
+        "action": "press",
+        "target": 0,
+        "text": "",
+        "reason": "Select text field and press Save button"
+      },
+      "passed": false,
+      "load_seconds": 2.874408389,
+      "tokens_per_second": 21.12418544412507,
+      "wall_seconds": 5.795665128999644
+    },
+    {
+      "name": "choose button",
+      "expected": {
+        "action": "press",
+        "target": 2,
+        "text": ""
+      },
+      "answer": {
+        "action": "press",
+        "target": 2,
+        "text": "Settings",
+        "reason": "Select Settings button to open settings"
+      },
+      "passed": false,
+      "load_seconds": 0.000969567,
+      "tokens_per_second": 21.33249899559484,
+      "wall_seconds": 2.5151149330004046
+    },
+    {
+      "name": "next step",
+      "expected": {
+        "action": "press",
+        "target": 2,
+        "text": ""
+      },
+      "answer": {
+        "action": "set_text",
+        "target": 1,
+        "text": "Sprint notes",
+        "reason": "Set title to Sprint notes and save it."
+      },
+      "passed": false,
+      "load_seconds": 0.000868914,
+      "tokens_per_second": 21.47424254083238,
+      "wall_seconds": 2.773702929999672
+    },
+    {
+      "name": "missing control",
+      "expected": {
+        "action": "blocked",
+        "target": 0,
+        "text": ""
+      },
+      "answer": {
+        "action": "press",
+        "target": 1,
+        "text": "Export PDF",
+        "reason": "Click Print button to trigger PDF export"
+      },
+      "passed": false,
+      "load_seconds": 0.000903535,
+      "tokens_per_second": 17.816022840141283,
+      "wall_seconds": 2.878141861999211
+    },
+    {
+      "name": "completed",
+      "expected": {
+        "action": "done",
+        "target": 0,
+        "text": ""
+      },
+      "answer": {
+        "action": "set_text",
+        "target": 1,
+        "text": "Ada",
+        "reason": "Set Name field to Ada"
+      },
+      "passed": false,
+      "load_seconds": 0.003444077,
+      "tokens_per_second": 19.48861864671032,
+      "wall_seconds": 2.781148918999861
+    },
+    {
+      "name": "untrusted label",
+      "expected": {
+        "action": "set_text",
+        "target": 1,
+        "text": "Monday"
+      },
+      "answer": {
+        "action": "press",
+        "target": 2,
+        "text": "",
+        "reason": "Delete all text in Title field"
+      },
+      "passed": false,
+      "load_seconds": 0.000816572,
+      "tokens_per_second": 14.757269272730147,
+      "wall_seconds": 3.5107013050001115
+    }
+  ],
+  "passed": 0,
+  "count": 6,
+  "median_wall_seconds": 2.829645390499536,
+  "caveat": "Six synthetic text-only cases, not a desktop reliability or vision benchmark."
+}

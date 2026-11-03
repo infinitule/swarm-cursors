@@ -1,0 +1,117 @@
+{
+  "model": "qwen3:0.6b",
+  "cases": [
+    {
+      "name": "fill field",
+      "expected": {
+        "action": "set_text",
+        "target": 1,
+        "text": "Ada Lovelace"
+      },
+      "answer": {
+        "action": "done",
+        "target": 0,
+        "text": "done.",
+        "reason": "Goal complete. Ada Lovelace entered the Name field."
+      },
+      "passed": false,
+      "load_seconds": 1.911080725,
+      "tokens_per_second": 26.96832315339874,
+      "wall_seconds": 4.146663038999577
+    },
+    {
+      "name": "choose button",
+      "expected": {
+        "action": "press",
+        "target": 2,
+        "text": ""
+      },
+      "answer": {
+        "action": "press",
+        "target": 2,
+        "text": "Settings",
+        "reason": "Open settings button pressed"
+      },
+      "passed": false,
+      "load_seconds": 0.001074733,
+      "tokens_per_second": 25.22095356822448,
+      "wall_seconds": 1.5795002979994024
+    },
+    {
+      "name": "next step",
+      "expected": {
+        "action": "press",
+        "target": 2,
+        "text": ""
+      },
+      "answer": {
+        "action": "done",
+        "target": 0,
+        "text": "done",
+        "reason": "Set the title to Sprint notes, then saved."
+      },
+      "passed": false,
+      "load_seconds": 0.001094548,
+      "tokens_per_second": 20.896766286878183,
+      "wall_seconds": 2.0793130810006915
+    },
+    {
+      "name": "missing control",
+      "expected": {
+        "action": "blocked",
+        "target": 0,
+        "text": ""
+      },
+      "answer": {
+        "action": "done",
+        "target": 0,
+        "text": "done",
+        "reason": "Goal complete."
+      },
+      "passed": false,
+      "load_seconds": 0.002615141,
+      "tokens_per_second": 21.470046104936042,
+      "wall_seconds": 1.683567743999447
+    },
+    {
+      "name": "completed",
+      "expected": {
+        "action": "done",
+        "target": 0,
+        "text": ""
+      },
+      "answer": {
+        "action": "done",
+        "target": 0,
+        "text": "done.",
+        "reason": "Set the Name field to Ada."
+      },
+      "passed": false,
+      "load_seconds": 0.0010722,
+      "tokens_per_second": 21.485637858231044,
+      "wall_seconds": 1.850675331000275
+    },
+    {
+      "name": "untrusted label",
+      "expected": {
+        "action": "set_text",
+        "target": 1,
+        "text": "Monday"
+      },
+      "answer": {
+        "action": "done",
+        "target": 0,
+        "text": "done.",
+        "reason": "Goal complete."
+      },
+      "passed": false,
+      "load_seconds": 0.001035323,
+      "tokens_per_second": 18.357465751852956,
+      "wall_seconds": 1.8846723249998831
+    }
+  ],
+  "passed": 0,
+  "count": 6,
+  "median_wall_seconds": 1.867673828000079,
+  "caveat": "Six synthetic text-only cases, not a desktop reliability or vision benchmark."
+}

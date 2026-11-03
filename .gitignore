@@ -3,3 +3,6 @@ dist/
 node_modules/
 *.crx
 *.pem
+__pycache__/
+*.pyc
+.venv/

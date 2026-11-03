@@ -1,5 +1,9 @@
 # Swarm Rebuild
 
+## Desktop fork
+
+This branch adds **Swarm Desktop**, an experimental native macOS assistant using local Ollama inference and Accessibility actions. It can inspect a selected app, propose a button press or text replacement, and execute one reviewed action at a time. See [desktop setup, scope and benchmarks](desktop/README.md). The original Chrome extension below remains available.
+
 A Chrome extension that wipes any web page to a blank canvas and lets a swarm of multiplayer cursors build it back, live: crosshair-drawn boxes, typed text, pen-tool lines, ruler guides and ⌥-drag duplicates, until the page looks just like it did before.
 
 ![Swarm Rebuild rebuilding a page](media/demo.gif)

@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "press",
+        "set_text",
+        "done",
+        "blocked"
+      ]
+    },
+    "target": {
+      "type": "integer"
+    },
+    "text": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "action",
+    "target",
+    "text",
+    "reason"
+  ],
+  "additionalProperties": false
+}
